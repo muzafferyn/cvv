@@ -354,4 +354,134 @@ Bugün sahip olduğum tüm bu deneyimler; disiplinli çalışma anlayışım, es
 
 
 </body>
+      <!-- Chatbox Başlangıç -->
+    <!-- Chatbox Modal Başlangıç -->
+<!--     <style>
+        .modal-uyari-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(10,14,23,0.75);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999;
+        }
+        .modal-uyari-box {
+            background: var(--dark-card, #1a1f2e);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+            padding: 28px 20px 20px 20px;
+            border: 1.5px solid var(--border-color, #436b9d33);
+            min-width: 240px;
+            max-width: 95vw;
+            width: 100%;
+            max-width: 370px;
+            text-align: center;
+            position: relative;
+            margin: 0 10px;
+            color: var(--text-primary, #fff);
+            font-family: inherit;
+        }
+        .modal-uyari-box .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.7rem;
+            color: #b8c5d6;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .modal-uyari-box .close-btn:hover {
+            color: #ff6b6b;
+        }
+        .modal-uyari-box .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+        .modal-uyari-box .header img {
+            width: 32px; height: 32px; margin-right: 10px;
+        }
+        .modal-uyari-box .header span {
+            font-size: 1.13rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            letter-spacing: 0.5px;
+        }
+        .modal-uyari-box .content {
+            font-size: 1.01rem;
+            color: var(--text-secondary, #b8c5d6);
+            line-height: 1.6;
+        }
+        @media (max-width: 600px) {
+            .modal-uyari-box {
+                min-width: unset;
+                max-width: 98vw;
+                padding: 16px 3vw 14px 3vw;
+            }
+            .modal-uyari-box .header img {
+                width: 26px; height: 26px;
+            }
+            .modal-uyari-box .header span {
+                font-size: 1.01rem;
+            }
+            .modal-uyari-box .content {
+                font-size: 0.97rem;
+            }
+        }
+    </style>
+    <style>
+        /* Custom cursor modal üstünde gözüksün ve chatbox açıkken daha belirgin olsun */
+        .custom-cursor, .custom-cursor-dot {
+            pointer-events: none;
+            position: fixed;
+            z-index: 10001;
+            transition: box-shadow 0.2s, background 0.2s, border 0.2s;
+        }
+        .custom-cursor.chatbox-active {
+            background: #fff !important;
+            border: 2.5px solid #ff6b6b !important;
+            box-shadow: 0 0 0 4px #ff6b6b33, 0 2px 12px #0005;
+            mix-blend-mode: difference;
+        }
+        .custom-cursor-dot.chatbox-active {
+            background: #ff6b6b !important;
+            box-shadow: 0 0 0 2px #fff, 0 0 8px #ff6b6b99;
+        }
+    </style>
+    <script>
+        // Chatbox açıkken custom cursor daha belirgin olsun ve modal üstünde kalsın
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.querySelector('.modal-uyari-bg');
+            var cursor = document.getElementById('customCursor');
+            var cursorDot = document.getElementById('customCursorDot');
+            function setCursorChatboxActive(active) {
+                if(cursor) cursor.classList.toggle('chatbox-active', active);
+                if(cursorDot) cursorDot.classList.toggle('chatbox-active', active);
+            }
+            if(modal) {
+                setCursorChatboxActive(true);
+                var closeBtn = modal.querySelector('.close-btn');
+                if(closeBtn) {
+                    closeBtn.addEventListener('click', function() {
+                        setCursorChatboxActive(false);
+                    });
+                }
+            }
+        });
+    </script>
+    <div class="modal-uyari-bg">
+        <div class="modal-uyari-box">
+            <button class="close-btn" onclick="this.closest('.modal-uyari-bg').style.display='none'">&times;</button>
+            <div class="header">
+                <img src="favicon.png" alt="Uyarı" style="background:#fff; border-radius:8px;">
+                <span>Uyarı</span>
+            </div>
+            <div class="content">
+                Şu anda aktif olarak iş arayışında değilim. Profesyonel gelişimime odaklanıyor ve mevcut projelerime devam ediyorum.<br>İlginiz için teşekkür ederim.
+            </div>
+        </div>
+    </div>
+    <!-- Chatbox Modal Bitiş -->
 </html>
