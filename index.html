@@ -532,7 +532,12 @@ Bugün sahip olduğum tüm bu deneyimler; disiplinli çalışma anlayışım, es
 
     <script src="script.js"></script>
 
-
+  <script type="text/javascript">
+var title = document.title;
+var alttitle = "Beni unutma ❤️";
+window.onblur = function () { document.title = alttitle; };
+window.onfocus = function () { document.title = title; };
+</script>
 
 
 </body>
