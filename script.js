@@ -417,9 +417,9 @@ if (contactForm) {
 }
 
 // Console Easter Egg
-console.log('%c🚀 BePeak Streaming Platform', 'color: #436b9d; font-size: 24px; font-weight: bold;');
-console.log('%cTürkiye\'nin en gelişmiş streaming scripti!', 'color: #5a8bc4; font-size: 14px;');
-console.log('%c💼 İş birliği için: info@bepeak.net', 'color: #6d9dc5; font-size: 12px;');
+console.log('%c Beni unutma ❤️', 'color: rgb(151, 23, 0); font-size: 24px; font-weight: bold;');
+console.log('%c Bilir misin, seni gerçekten sevdim?', 'color: #f32a2ada; font-size: 14px;');
+console.log('%c Sebep diye bir küçük mutluluk', 'color: #bd7c6c; font-size: 12px;');
 
 // Add ripple effect to buttons
 const buttons = document.querySelectorAll('.btn');
@@ -464,7 +464,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-console.log('%c✨ Website loaded successfully!', 'color: #28c840; font-size: 14px; font-weight: bold;');
+console.log('%c✨ consoleyi kapat dost.         -sezen aksu ben böyleyim..', 'color: #28c840; font-size: 14px; font-weight: bold;');
 
 // HLS Stream Monitor Chart
 const streamChart = document.getElementById('streamChart');
@@ -772,7 +772,7 @@ if (liveIndicator) {
     }, 2000);
 }
 
-console.log('%c🎬 HLS Stream Features Loaded!', 'color: #5a8bc4; font-size: 14px; font-weight: bold;');
+console.log('%c bilirsinn unutulmak dokunur ya her insana....', 'color: #800303; font-size: 14px; font-weight: bold;');
 
 // Custom Cursor
 const cursor = document.getElementById('customCursor');
