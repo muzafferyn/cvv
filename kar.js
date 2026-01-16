@@ -1,6 +1,6 @@
 // özel stil 
 window.addEventListener('DOMContentLoaded', function snowEffect() {
-    //console.log('kar.js loaded - snow effect should start');
+    //console.log('kar.js loaded - kar efektini startla haha xd');
     const snowCount = 40;
     const snowContainer = document.createElement('div');
     snowContainer.className = 'snow-container';
