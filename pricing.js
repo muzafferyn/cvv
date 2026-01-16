@@ -1,4 +1,4 @@
-// Pricing Page JavaScript
+// Pricing Page JavaScript özel tasarım 
 
 // Ad Toggle Functionality
 const adToggle = document.getElementById('adToggle');
