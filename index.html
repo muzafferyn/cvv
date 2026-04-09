@@ -148,25 +148,30 @@
             90%, 100% { transform: scale(0) rotate(225deg); }
         }
 
-        @keyframes shine {
-            0% { background-position: -200%; }
-            100% { background-position: 200%; }
+        @keyframes animate {
+            0% {
+                background-position: -300%;
+            }
+            100% {
+                background-position: 300%;
+            }
         }
 
         .loader-text {
-            font-style: italic;
-            margin-top: 20px;
-            font-size: 1.1rem;
-            letter-spacing: 0.1em;
-            text-align: center;
+            position: relative;
             font-weight: bold;
+            font-family: 'Arial Bold', sans-serif;
+            font-size: 2em;
+            letter-spacing: 4px;
+            overflow: hidden;
             background: linear-gradient(90deg, #000, #fff, #000);
             background-repeat: no-repeat;
             background-size: 80%;
-            animation: shine 3s linear infinite;
+            animation: animate 3s linear infinite;
             -webkit-background-clip: text;
             -webkit-text-fill-color: rgba(255, 255, 255, 0);
-            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
         }
 
         #preloader {
