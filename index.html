@@ -390,6 +390,12 @@
             100% { background-position: -100% 0; }
         }
 
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         @media (max-width: 640px) {
             #scroll-to-top {
                 bottom: 1.5rem;
@@ -1508,8 +1514,11 @@
                             </div>
                             <div class="group relative cursor-pointer" id="contact-view-1-b"
                                 style="pointer-events:auto; opacity: 1; transform: scale(1);">
+                                <!-- Background Glow like Caglar's site -->
+                                <div class="absolute -inset-x-20 -inset-y-10 bg-[linear-gradient(90deg,#06b6d4,#7c3aed,#4f46e5,#38bdf8,#06b6d4)] blur-[100px] opacity-0 group-hover:opacity-[0.15] transition-opacity duration-700 animate-[gradient_8s_ease_infinite] z-0 pointer-events-none"></div>
+                                
                                 <div
-                                    class="flex flex-col items-center gap-6 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
+                                    class="relative z-10 flex flex-col items-center gap-6 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
                                     <h2
                                         class="relative text-center text-5xl font-light tracking-tight text-foreground sm:text-6xl md:text-7xl lg:text-8xl transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
                                         <span class="block overflow-hidden"><span
@@ -1598,9 +1607,14 @@
                                     }
 
                                     // Fade out View 1 elements
-                                    if (view1a) { view1a.style.transition = 'opacity 0.5s ease, transform 0.5s ease'; view1a.style.opacity = '0'; view1a.style.transform = 'translateY(-20px)'; view1a.style.pointerEvents = 'none'; }
-                                    if (view1b) { view1b.style.transition = 'opacity 0.5s ease, transform 0.5s ease'; view1b.style.opacity = '0'; view1b.style.transform = 'scale(0.95)'; view1b.style.pointerEvents = 'none'; }
-                                    if (view1c) { view1c.style.transition = 'opacity 0.5s ease, transform 0.5s ease'; view1c.style.opacity = '0'; view1c.style.transform = 'translateY(20px)'; view1c.style.pointerEvents = 'none'; }
+                                    if (view1a) { view1a.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; view1a.style.opacity = '0'; view1a.style.transform = 'translateY(-30px)'; view1a.style.pointerEvents = 'none'; }
+                                    if (view1b) { 
+                                        view1b.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; 
+                                        view1b.style.opacity = '0'; 
+                                        view1b.style.transform = 'translateY(-50px) scale(0.98)'; 
+                                        view1b.style.pointerEvents = 'none'; 
+                                    }
+                                    if (view1c) { view1c.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; view1c.style.opacity = '0'; view1c.style.transform = 'translateY(30px)'; view1c.style.pointerEvents = 'none'; }
 
                                     // Fade in View 2 elements after delay
                                     setTimeout(() => {
