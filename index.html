@@ -364,41 +364,30 @@
             transform: translateY(-2px);
         }
 
-        /* Robust Skeleton Hover */
+        /* Caglar Cakmak Style Shimmer */
         .skeleton-hover {
             display: inline-block;
-            position: relative !important;
-            overflow: hidden !important;
-            border-radius: 6px;
-            padding: 0 4px;
-        }
-
-        .skeleton-hover::after {
-            content: "" !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: -100% !important;
-            width: 50% !important;
-            height: 100% !important;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 255, 255, 0.1), 
-                transparent) !important;
-            pointer-events: none;
-        }
-
-        .group:hover .skeleton-hover::after {
-            animation: skeleton-slide 1.2s infinite linear !important;
+            transition: all 0.5s ease;
+            background: linear-gradient(
+                to right,
+                rgba(163, 163, 163, 0.6) 20%,
+                rgb(255, 255, 255) 50%,
+                rgba(163, 163, 163, 0.6) 80%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-position: 100% 0;
+            transition: background-position 0s;
         }
 
         .group:hover .skeleton-hover {
-            color: rgba(163, 163, 163, 0.6) !important; /* Forces original muted color */
-            background: rgba(255, 255, 255, 0.03);
+            animation: caglar-shimmer 2s linear infinite !important;
         }
 
-        @keyframes skeleton-slide {
-            0% { left: -100%; }
-            100% { left: 150%; }
+        @keyframes caglar-shimmer {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
         }
 
         @media (max-width: 640px) {
