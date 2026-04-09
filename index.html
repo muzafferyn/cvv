@@ -273,14 +273,16 @@
             position: absolute;
             top: 0; bottom: 0; left: 0; right: 0;
             margin: auto;
+            filter: drop-shadow(0 0 8px rgba(74, 222, 128, 0.6));
         }
 
         .path-corner {
             stroke-dasharray: 1, 200;
             stroke-dashoffset: 0;
             animation: dash-corner 1.5s ease-in-out infinite;
-            stroke: #00ff00; /* Fixed Green */
+            stroke: #4ade80; /* Pale Green */
             stroke-linecap: round;
+            stroke-width: 4;
         }
 
         @keyframes rotate-corner {
