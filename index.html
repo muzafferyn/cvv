@@ -512,7 +512,7 @@
                                                 const newX = s.x + actualSpeed * Math.cos(rad);
                                                 const newY = s.y + actualSpeed * Math.sin(rad);
                                                 const newDistance = s.distance + actualSpeed;
-                                                const newScale = 1 + newDistance / 100;
+                                                const newScale = 1 + newDistance / 1200;
 
                                                 if (newX < -50 || newX > window.innerWidth + 50 || newY < -50 || newY > window.innerHeight + 50) {
                                                     this.star = null;
@@ -549,8 +549,9 @@
                                     const initMeteors = () => {
                                         const container = document.getElementById('meteor-container');
                                         if (container) {
+                                            // Only Purple/Cyan meteors, and added a second instance to maintain density
                                             new ShootingStar(container, { starColor: "#9E00FF", trailColor: "#2EB9DF", minSpeed: 15, maxSpeed: 35, minDelay: 1000, maxDelay: 3000 });
-                                            new ShootingStar(container, { starColor: "#FF0099", trailColor: "#FFB800", minSpeed: 10, maxSpeed: 25, minDelay: 2000, maxDelay: 4000 });
+                                            new ShootingStar(container, { starColor: "#9E00FF", trailColor: "#2EB9DF", minSpeed: 10, maxSpeed: 25, minDelay: 2000, maxDelay: 5000 });
                                         }
                                     };
 
