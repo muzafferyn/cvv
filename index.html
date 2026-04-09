@@ -252,6 +252,50 @@
             0%, 100% { transform: scale(1); opacity: 0.5; }
             50% { transform: scale(1.4); opacity: 1; }
         }
+
+        /* --- Corner Loader Styles --- */
+        .corner-loader-wrap {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            z-index: 1000001;
+        }
+
+        .circular-loader {
+            animation: rotate-corner 2s linear infinite;
+            height: 100%;
+            transform-origin: center center;
+            width: 100%;
+            position: absolute;
+            top: 0; bottom: 0; left: 0; right: 0;
+            margin: auto;
+        }
+
+        .path-corner {
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            animation: dash-corner 1.5s ease-in-out infinite, color-corner 6s ease-in-out infinite;
+            stroke-linecap: round;
+        }
+
+        @keyframes rotate-corner {
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes dash-corner {
+            0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; }
+            50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35; }
+            100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124; }
+        }
+
+        @keyframes color-corner {
+            100%, 0% { stroke: #d62d20; }
+            40% { stroke: #0057e7; }
+            66% { stroke: #008744; }
+            80%, 90% { stroke: #ffa700; }
+        }
     </style>
     </link>
     </link>
@@ -262,6 +306,13 @@
 <body class="instrument_serif_2a53c48e-module__mNLOEq__variable inter_fe8b9d92-module__LINzvG__variable antialiased">
     <!-- Antibeyto Cumhuriyet Preloader -->
     <div id="preloader">
+        <!-- Corner Loader -->
+        <div class="corner-loader-wrap">
+            <svg class="circular-loader" viewBox="25 25 50 50">
+                <circle class="path-corner" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+        
         <div class="m-loader-container">
             <svg class="m-svg" viewBox="0 0 100 80">
                 <path class="m-path" d="M10 70 V10 L50 50 L90 10 V70" fill="none" stroke="#ff0000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
