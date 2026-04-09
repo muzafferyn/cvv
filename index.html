@@ -364,25 +364,41 @@
             transform: translateY(-2px);
         }
 
-        /* Skeleton Hover Effect */
+        /* Robust Skeleton Hover */
         .skeleton-hover {
-            border-radius: 4px;
-            transition: all 0.5s ease;
+            display: inline-block;
+            position: relative !important;
+            overflow: hidden !important;
+            border-radius: 6px;
+            padding: 0 4px;
+        }
+
+        .skeleton-hover::after {
+            content: "" !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: -100% !important;
+            width: 50% !important;
+            height: 100% !important;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent) !important;
+            pointer-events: none;
+        }
+
+        .group:hover .skeleton-hover::after {
+            animation: skeleton-slide 1.2s infinite linear !important;
         }
 
         .group:hover .skeleton-hover {
-            background: linear-gradient(90deg, 
-                rgba(255, 255, 255, 0.02) 25%, 
-                rgba(255, 255, 255, 0.08) 50%, 
-                rgba(255, 255, 255, 0.02) 75%);
-            background-size: 200% 100%;
-            animation: skeleton-shimmer 1.5s infinite linear;
-            color: rgba(163, 163, 163, 0.6) !important; /* text-muted-foreground/60 */
+            color: rgba(163, 163, 163, 0.6) !important; /* Forces original muted color */
+            background: rgba(255, 255, 255, 0.03);
         }
 
-        @keyframes skeleton-shimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
+        @keyframes skeleton-slide {
+            0% { left: -100%; }
+            100% { left: 150%; }
         }
 
         @media (max-width: 640px) {
@@ -1513,7 +1529,7 @@
                                         <span class="block overflow-hidden"><span
                                                 class="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] delay-75"
                                                 style="transform: translateY(0px);"><span
-                                                    class="inline-block text-muted-foreground/60 transition-colors duration-700 group-hover:text-foreground">çalışalım</span></span></span>
+                                                    class="inline-block text-muted-foreground/60 transition-all duration-700 skeleton-hover">çalışalım</span></span></span>
                                     </h2>
                                     <!-- Magnetic Button with small inner ripple -->
                                     <div class="relative mt-2 flex size-16 items-center justify-center sm:size-20 rounded-full border border-border transition-colors duration-[300ms] overflow-hidden group/btn hover:border-foreground"
