@@ -1770,6 +1770,12 @@
             startAutoSlide();
         })();
     </script>
+    <script type="text/javascript">
+        var title = document.title;
+        var alttitle = "Beni unutma ❤️";
+        window.onblur = function () { document.title = alttitle; };
+        window.onfocus = function () { document.title = title; };
+    </script>
     <script>
         (function () {
             const desktopNav = document.getElementById('desktop-nav');
