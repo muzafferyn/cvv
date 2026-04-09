@@ -305,29 +305,73 @@ h1 {
 }
 
 /* ==============================================
-   Antibeyto Cumhuriyet Preloader
+   Cumhuriyet Preloader
    ============================================== */
 @keyframes top-box {
-    0% { top: 0; }
-    25% { transform: scale(1) rotate(45deg); }
-    50% { top: 128px; transform: scale(2) rotate(225deg); }
-    75% { transform: scale(1) rotate(225deg); }
-    100% { top: 0; transform: rotate(225deg); }
+    0% {
+        top: 0;
+    }
+
+    25% {
+        transform: scale(1) rotate(45deg);
+    }
+
+    50% {
+        top: 128px;
+        transform: scale(2) rotate(225deg);
+    }
+
+    75% {
+        transform: scale(1) rotate(225deg);
+    }
+
+    100% {
+        top: 0;
+        transform: rotate(225deg);
+    }
 }
 
 @keyframes bottom-box {
-    0% { top: 0; }
-    25% { transform: scale(1) rotate(45deg); }
-    50% { top: -128px; transform: scale(2) rotate(225deg); }
-    75% { transform: scale(1) rotate(225deg); }
-    100% { top: 0; transform: rotate(225deg); }
+    0% {
+        top: 0;
+    }
+
+    25% {
+        transform: scale(1) rotate(45deg);
+    }
+
+    50% {
+        top: -128px;
+        transform: scale(2) rotate(225deg);
+    }
+
+    75% {
+        transform: scale(1) rotate(225deg);
+    }
+
+    100% {
+        top: 0;
+        transform: rotate(225deg);
+    }
 }
 
 @keyframes middle-box {
-    0% { transform: scale(0) rotate(45deg); }
-    30% { transform: scale(0) rotate(100deg); }
-    50% { transform: scale(3) rotate(225deg); }
-    90%, 100% { transform: scale(0) rotate(225deg); }
+    0% {
+        transform: scale(0) rotate(45deg);
+    }
+
+    30% {
+        transform: scale(0) rotate(100deg);
+    }
+
+    50% {
+        transform: scale(3) rotate(225deg);
+    }
+
+    90%,
+    100% {
+        transform: scale(0) rotate(225deg);
+    }
 }
 
 #preloader {
@@ -343,8 +387,8 @@ h1 {
     left: 0;
     z-index: 999999;
     font-family: 'Poppins', sans-serif;
-    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                visibility 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+        visibility 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 #preloader.hidden {
@@ -360,7 +404,8 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Added to contain scaling boxes */
+    overflow: hidden;
+    /* Added to contain scaling boxes */
 }
 
 .white-box {
@@ -408,4 +453,4 @@ h1 {
     margin-top: -20px;
     font-size: 1.1rem;
     z-index: 1000;
-}
+}
