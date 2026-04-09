@@ -364,6 +364,27 @@
             transform: translateY(-2px);
         }
 
+        /* Skeleton Hover Effect */
+        .skeleton-hover {
+            border-radius: 4px;
+            transition: all 0.5s ease;
+        }
+
+        .group:hover .skeleton-hover {
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0.02) 25%, 
+                rgba(255, 255, 255, 0.08) 50%, 
+                rgba(255, 255, 255, 0.02) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-shimmer 1.5s infinite linear;
+            color: rgba(163, 163, 163, 0.6) !important; /* text-muted-foreground/60 */
+        }
+
+        @keyframes skeleton-shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
         @media (max-width: 640px) {
             #scroll-to-top {
                 bottom: 1.5rem;
