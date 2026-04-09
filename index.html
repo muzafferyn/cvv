@@ -256,10 +256,10 @@
         /* --- Corner Loader Styles --- */
         .corner-loader-wrap {
             position: absolute;
-            top: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
             z-index: 1000001;
         }
 
@@ -276,7 +276,8 @@
         .path-corner {
             stroke-dasharray: 1, 200;
             stroke-dashoffset: 0;
-            animation: dash-corner 1.5s ease-in-out infinite, color-corner 6s ease-in-out infinite;
+            animation: dash-corner 1.5s ease-in-out infinite;
+            stroke: #00ff00; /* Fixed Green */
             stroke-linecap: round;
         }
 
@@ -290,12 +291,6 @@
             100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124; }
         }
 
-        @keyframes color-corner {
-            100%, 0% { stroke: #d62d20; }
-            40% { stroke: #0057e7; }
-            66% { stroke: #008744; }
-            80%, 90% { stroke: #ffa700; }
-        }
 
         /* Responsive Preloader */
         @media (max-width: 640px) {
@@ -314,8 +309,8 @@
             .corner-loader-wrap {
                 top: 15px;
                 right: 15px;
-                width: 50px;
-                height: 50px;
+                width: 20px;
+                height: 20px;
             }
         }
     </style>
