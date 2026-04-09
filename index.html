@@ -317,6 +317,61 @@
                 height: 20px;
             }
         }
+        /* Scroll to Top Button */
+        #scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 90;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(8px);
+            color: #ff4444;
+            cursor: pointer;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255, 68, 68, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+        }
+
+        #scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #scroll-to-top:hover {
+            background: #111;
+            border-color: #ff4444;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(255, 68, 68, 0.3);
+        }
+
+        #scroll-to-top svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        #scroll-to-top:hover svg {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 640px) {
+            #scroll-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 40px;
+                height: 40px;
+            }
+        }
     </style>
     </link>
     </link>
@@ -341,6 +396,13 @@
         </div>
         <i class="loader-text">yönlendiriliyorsunuz.. - yorgun</i>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top" aria-label="Yukarı Çık">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+        </svg>
+    </button>
     
     <script>
         window.addEventListener('load', function() {
@@ -350,6 +412,19 @@
                 preloader.classList.add('hidden');
                 document.body.style.overflow = 'auto'; // Re-enable scroll if it was disabled
             }, 2500); // 2.5 seconds match the original feel but gives time to see the animation
+        });
+
+        // Scroll to top logic
+        const scrollBtn = document.getElementById("scroll-to-top");
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset > 400) {
+                scrollBtn.classList.add("visible");
+            } else {
+                scrollBtn.classList.remove("visible");
+            }
+        });
+        scrollBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     </script>
 
