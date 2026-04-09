@@ -148,6 +148,15 @@
             90%, 100% { transform: scale(0) rotate(225deg); }
         }
 
+        .loader-text {
+            color: #ffffff;
+            font-style: italic;
+            margin-top: 20px;
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+
         #preloader {
             background: #000000;
             display: flex;
@@ -169,53 +178,62 @@
             visibility: hidden;
         }
 
-        .loader-container {
-            width: 320px;
-            height: 320px;
+        /* --- M Shape Loader Styles --- */
+        .m-loader-container {
+            position: relative;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            position: relative;
+            align-items: center;
+            width: 200px;
+            height: 150px;
         }
 
-        .white-box {
-            width: 80px;
-            height: 80px;
-            background-color: #ff0000;
-            border-radius: 0px;
+        .m-svg {
+            width: 140px;
+            height: auto;
+            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.9));
         }
 
-        .loader-top {
-            position: relative;
-            animation: top-box 3s infinite;
-            transform: rotate(45deg);
+        .m-path {
+            stroke-dasharray: 400;
+            stroke-dashoffset: 400;
+            animation: m-draw 3s cubic-bezier(0.65, 0, 0.35, 1) infinite;
         }
 
-        .loader-middle {
-            width: 50px;
-            height: 50px;
-            background-color: #101010;
-            z-index: 100;
-            animation: middle-box 3s infinite;
-            transform: rotate(45deg);
+        @keyframes m-draw {
+            0% {
+                stroke-dashoffset: 400;
+                opacity: 0.3;
+            }
+            30% {
+                opacity: 1;
+            }
+            50% {
+                stroke-dashoffset: 0;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                stroke-dashoffset: -400;
+                opacity: 0.3;
+            }
+        }
+
+        /* Ambient pulse for the loader */
+        #preloader::after {
+            content: '';
             position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.15) 0%, transparent 70%);
+            animation: bg-pulse 3s infinite ease-in-out;
+            pointer-events: none;
         }
 
-        .loader-bottom {
-            background-color: #ff0000;
-            position: relative;
-            z-index: 50;
-            animation: bottom-box 3s infinite;
-            transform: rotate(45deg);
-        }
-
-        .loader-text {
-            color: #ffffff;
-            font-style: italic;
-            margin-top: 20px;
-            font-size: 1rem;
-            letter-spacing: 0.05em;
+        @keyframes bg-pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.4); opacity: 1; }
         }
     </style>
     </link>
@@ -227,10 +245,10 @@
 <body class="instrument_serif_2a53c48e-module__mNLOEq__variable inter_fe8b9d92-module__LINzvG__variable antialiased">
     <!-- Antibeyto Cumhuriyet Preloader -->
     <div id="preloader">
-        <div class="loader-container">
-            <div class="loader-top white-box"></div>
-            <div class="loader-middle"></div>
-            <div class="loader-bottom white-box"></div>
+        <div class="m-loader-container">
+            <svg class="m-svg" viewBox="0 0 100 80">
+                <path class="m-path" d="M10 70 V10 L50 50 L90 10 V70" fill="none" stroke="#ff0000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
         </div>
         <i class="loader-text">yönlendiriliyorsunuz.. - yorgun</i>
     </div>
