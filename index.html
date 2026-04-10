@@ -404,6 +404,20 @@
                 height: 40px;
             }
         }
+
+        /* Blocking interaction during loader */
+        .loader-active {
+            overflow: hidden !important;
+            height: 100vh !important;
+            position: fixed !important;
+            width: 100% !important;
+            touch-action: none !important;
+            pointer-events: none !important;
+        }
+
+        #preloader {
+            pointer-events: auto !important;
+        }
     </style>
     </link>
     </link>
@@ -411,7 +425,7 @@
     </link>
 </head>
 
-<body class="instrument_serif_2a53c48e-module__mNLOEq__variable inter_fe8b9d92-module__LINzvG__variable antialiased">
+<body class="instrument_serif_2a53c48e-module__mNLOEq__variable inter_fe8b9d92-module__LINzvG__variable antialiased loader-active">
     <!-- Antibeyto Cumhuriyet Preloader -->
     <div id="preloader">
         <!-- Corner Loader -->
@@ -437,14 +451,26 @@
     </button>
     
     <script>
-        window.addEventListener('load', function() {
+        (function() {
             const preloader = document.getElementById('preloader');
-            // Give it a small delay for better feel
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-                document.body.style.overflow = 'auto'; // Re-enable scroll if it was disabled
-            }, 2500); // 2.5 seconds match the original feel but gives time to see the animation
-        });
+            const isLoaderShown = sessionStorage.getItem('preloaderShown');
+
+            if (isLoaderShown) {
+                // If already shown in this session, hide immediately
+                preloader.style.display = 'none';
+                document.body.classList.remove('loader-active');
+            } else {
+                // First time in session
+                window.addEventListener('load', function() {
+                    // Give it a small delay for better feel
+                    setTimeout(() => {
+                        preloader.classList.add('hidden');
+                        document.body.classList.remove('loader-active');
+                        sessionStorage.setItem('preloaderShown', 'true');
+                    }, 2500);
+                });
+            }
+        })();
 
         // Scroll to top logic
         const scrollBtn = document.getElementById("scroll-to-top");
