@@ -126,32 +126,77 @@
 
         /* --- Antibeyto Cumhuriyet Preloader Styles --- */
         @keyframes top-box {
-            0% { top: 0; }
-            25% { transform: scale(1) rotate(45deg); }
-            50% { top: 128px; transform: scale(2) rotate(225deg); }
-            75% { transform: scale(1) rotate(225deg); }
-            100% { top: 0; transform: rotate(225deg); }
+            0% {
+                top: 0;
+            }
+
+            25% {
+                transform: scale(1) rotate(45deg);
+            }
+
+            50% {
+                top: 128px;
+                transform: scale(2) rotate(225deg);
+            }
+
+            75% {
+                transform: scale(1) rotate(225deg);
+            }
+
+            100% {
+                top: 0;
+                transform: rotate(225deg);
+            }
         }
 
         @keyframes bottom-box {
-            0% { top: 0; }
-            25% { transform: scale(1) rotate(45deg); }
-            50% { top: -128px; transform: scale(2) rotate(225deg); }
-            75% { transform: scale(1) rotate(225deg); }
-            100% { top: 0; transform: rotate(225deg); }
+            0% {
+                top: 0;
+            }
+
+            25% {
+                transform: scale(1) rotate(45deg);
+            }
+
+            50% {
+                top: -128px;
+                transform: scale(2) rotate(225deg);
+            }
+
+            75% {
+                transform: scale(1) rotate(225deg);
+            }
+
+            100% {
+                top: 0;
+                transform: rotate(225deg);
+            }
         }
 
         @keyframes middle-box {
-            0% { transform: scale(0) rotate(45deg); }
-            30% { transform: scale(0) rotate(100deg); }
-            50% { transform: scale(3) rotate(225deg); }
-            90%, 100% { transform: scale(0) rotate(225deg); }
+            0% {
+                transform: scale(0) rotate(45deg);
+            }
+
+            30% {
+                transform: scale(0) rotate(100deg);
+            }
+
+            50% {
+                transform: scale(3) rotate(225deg);
+            }
+
+            90%,
+            100% {
+                transform: scale(0) rotate(225deg);
+            }
         }
 
         @keyframes animate {
             0% {
                 background-position: -300%;
             }
+
             100% {
                 background-position: 300%;
             }
@@ -224,15 +269,19 @@
                 stroke-dashoffset: 400;
                 opacity: 0.3;
             }
+
             30% {
                 opacity: 1;
             }
+
             50% {
                 stroke-dashoffset: 0;
             }
+
             70% {
                 opacity: 1;
             }
+
             100% {
                 stroke-dashoffset: -400;
                 opacity: 0.3;
@@ -251,8 +300,17 @@
         }
 
         @keyframes bg-pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.4); opacity: 1; }
+
+            0%,
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.4);
+                opacity: 1;
+            }
         }
 
         /* --- Corner Loader Styles --- */
@@ -271,7 +329,10 @@
             transform-origin: center center;
             width: 100%;
             position: absolute;
-            top: 0; bottom: 0; left: 0; right: 0;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
             margin: auto;
             filter: drop-shadow(0 0 5px #8ba88d) drop-shadow(0 0 10px rgba(139, 168, 141, 0.3));
         }
@@ -280,19 +341,33 @@
             stroke-dasharray: 1, 200;
             stroke-dashoffset: 0;
             animation: dash-corner 1.5s ease-in-out infinite;
-            stroke: #8ba88d; /* Grayish Green */
+            stroke: #8ba88d;
+            /* Grayish Green */
             stroke-linecap: round;
             stroke-width: 4;
         }
 
         @keyframes rotate-corner {
-            100% { transform: rotate(360deg); }
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes dash-corner {
-            0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; }
-            50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35; }
-            100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124; }
+            0% {
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+
+            50% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -35;
+            }
+
+            100% {
+                stroke-dasharray: 89, 200;
+                stroke-dashoffset: -124;
+            }
         }
 
 
@@ -303,13 +378,16 @@
                 letter-spacing: 3px;
                 background-size: 80%;
             }
+
             .m-svg {
                 width: 100px;
             }
+
             .m-loader-container {
                 width: 150px;
                 height: 100px;
             }
+
             .corner-loader-wrap {
                 top: 15px;
                 right: 15px;
@@ -317,6 +395,7 @@
                 height: 20px;
             }
         }
+
         /* Scroll to Top Button */
         #scroll-to-top {
             position: fixed;
@@ -368,12 +447,10 @@
         .skeleton-hover {
             display: inline-block;
             transition: all 0.5s ease;
-            background: linear-gradient(
-                to right,
-                rgba(163, 163, 163, 0.6) 20%,
-                rgb(255, 255, 255) 50%,
-                rgba(163, 163, 163, 0.6) 80%
-            );
+            background: linear-gradient(to right,
+                    rgba(163, 163, 163, 0.6) 20%,
+                    rgb(255, 255, 255) 50%,
+                    rgba(163, 163, 163, 0.6) 80%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -386,14 +463,27 @@
         }
 
         @keyframes caglar-shimmer {
-            0% { background-position: 100% 0; }
-            100% { background-position: -100% 0; }
+            0% {
+                background-position: 100% 0;
+            }
+
+            100% {
+                background-position: -100% 0;
+            }
         }
 
         @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         @media (max-width: 640px) {
@@ -425,19 +515,22 @@
     </link>
 </head>
 
-<body class="instrument_serif_2a53c48e-module__mNLOEq__variable inter_fe8b9d92-module__LINzvG__variable antialiased loader-active">
+<body
+    class="instrument_serif_2a53c48e-module__mNLOEq__variable inter_fe8b9d92-module__LINzvG__variable antialiased loader-active">
     <!-- Antibeyto Cumhuriyet Preloader -->
     <div id="preloader">
         <!-- Corner Loader -->
         <div class="corner-loader-wrap">
             <svg class="circular-loader" viewBox="25 25 50 50">
-                <circle class="path-corner" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+                <circle class="path-corner" cx="50" cy="50" r="20" fill="none" stroke-width="3"
+                    stroke-miterlimit="10" />
             </svg>
         </div>
-        
+
         <div class="m-loader-container">
             <svg class="m-svg" viewBox="0 0 100 80">
-                <path class="m-path" d="M10 70 V10 L50 50 L90 10 V70" fill="none" stroke="#ff0000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+                <path class="m-path" d="M10 70 V10 L50 50 L90 10 V70" fill="none" stroke="#ff0000" stroke-width="10"
+                    stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </div>
         <i class="loader-text">yönlendiriliyorsunuz.. - yorgun</i>
@@ -445,13 +538,14 @@
 
     <!-- Scroll to Top Button -->
     <button id="scroll-to-top" aria-label="Yukarı Çık">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m18 15-6-6-6 6"/>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6" />
         </svg>
     </button>
-    
+
     <script>
-        (function() {
+        (function () {
             const preloader = document.getElementById('preloader');
             const isLoaderShown = sessionStorage.getItem('preloaderShown');
 
@@ -461,7 +555,7 @@
                 document.body.classList.remove('loader-active');
             } else {
                 // First time in session
-                window.addEventListener('load', function() {
+                window.addEventListener('load', function () {
                     // Give it a small delay for better feel
                     setTimeout(() => {
                         preloader.classList.add('hidden');
@@ -1541,8 +1635,10 @@
                             <div class="group relative cursor-pointer" id="contact-view-1-b"
                                 style="pointer-events:auto; opacity: 1; transform: scale(1);">
                                 <!-- Background Glow like Caglar's site -->
-                                <div class="absolute -inset-x-20 -inset-y-10 bg-[linear-gradient(90deg,#06b6d4,#7c3aed,#4f46e5,#38bdf8,#06b6d4)] blur-[100px] opacity-0 group-hover:opacity-[0.15] transition-opacity duration-700 animate-[gradient_8s_ease_infinite] z-0 pointer-events-none"></div>
-                                
+                                <div
+                                    class="absolute -inset-x-20 -inset-y-10 bg-[linear-gradient(90deg,#06b6d4,#7c3aed,#4f46e5,#38bdf8,#06b6d4)] blur-[100px] opacity-0 group-hover:opacity-[0.15] transition-opacity duration-700 animate-[gradient_8s_ease_infinite] z-0 pointer-events-none">
+                                </div>
+
                                 <div
                                     class="relative z-10 flex flex-col items-center gap-6 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]">
                                     <h2
@@ -1634,11 +1730,11 @@
 
                                     // Fade out View 1 elements
                                     if (view1a) { view1a.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; view1a.style.opacity = '0'; view1a.style.transform = 'translateY(-30px)'; view1a.style.pointerEvents = 'none'; }
-                                    if (view1b) { 
-                                        view1b.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; 
-                                        view1b.style.opacity = '0'; 
-                                        view1b.style.transform = 'translateY(-50px) scale(0.98)'; 
-                                        view1b.style.pointerEvents = 'none'; 
+                                    if (view1b) {
+                                        view1b.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                                        view1b.style.opacity = '0';
+                                        view1b.style.transform = 'translateY(-50px) scale(0.98)';
+                                        view1b.style.pointerEvents = 'none';
                                     }
                                     if (view1c) { view1c.style.transition = 'opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)'; view1c.style.opacity = '0'; view1c.style.transform = 'translateY(30px)'; view1c.style.pointerEvents = 'none'; }
 
@@ -2136,7 +2232,7 @@
     </script>
     <script type="text/javascript">
         var title = document.title;
-        var alttitle = "Beni unutma ❤️";
+        var alttitle = "Geri dön..:()";
         window.onblur = function () { document.title = alttitle; };
         window.onfocus = function () { document.title = title; };
     </script>
