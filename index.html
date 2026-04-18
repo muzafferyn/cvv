@@ -396,51 +396,61 @@
             }
         }
 
-        /* Scroll to Top Button */
+        /* Scroll to Top Button - Enhanced Premium Theme */
         #scroll-to-top {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 90;
-            background: rgba(10, 10, 10, 0.8);
-            backdrop-filter: blur(8px);
-            color: #ff4444;
+            bottom: 2.5rem;
+            right: 2.5rem;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #ff0000;
             cursor: pointer;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255, 68, 68, 0.2);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 0, 0, 0.05);
             opacity: 0;
             visibility: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            transform: translateY(30px) scale(0.8);
         }
 
         #scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+            animation: scroll-pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes scroll-pulse {
+            0%, 100% { border-color: rgba(255, 0, 0, 0.2); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
+            50% { border-color: rgba(255, 0, 0, 0.6); box-shadow: 0 10px 35px rgba(255, 0, 0, 0.2); }
         }
 
         #scroll-to-top:hover {
-            background: #111;
-            border-color: #ff4444;
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(255, 68, 68, 0.3);
+            background: rgba(255, 0, 0, 0.1);
+            border-color: #ff0000;
+            transform: translateY(-8px) scale(1.1) !important;
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.4);
+            animation: none;
         }
 
         #scroll-to-top svg {
-            width: 20px;
-            height: 20px;
-            transition: transform 0.3s ease;
+            width: 24px;
+            height: 24px;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.3));
         }
 
         #scroll-to-top:hover svg {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.8));
         }
 
         /* relax Style Shimmer */
@@ -538,7 +548,7 @@
 
     <!-- Scroll to Top Button -->
     <button id="scroll-to-top" aria-label="Yukarı Çık">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="m18 15-6-6-6 6" />
         </svg>
