@@ -396,61 +396,94 @@
             }
         }
 
-        /* Scroll to Top Button - Enhanced Premium Theme */
+        /* Scroll to Top - Ultra Premium Progress Ring Mode */
         #scroll-to-top {
             position: fixed;
             bottom: 2.5rem;
             right: 2.5rem;
             z-index: 1000;
-            background: rgba(10, 10, 10, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(10, 10, 10, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             color: #ff0000;
             cursor: pointer;
-            width: 50px;
-            height: 50px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255, 0, 0, 0.2);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 0, 0, 0.05);
+            border: none;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 0, 0, 0.05);
             opacity: 0;
             visibility: hidden;
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-            transform: translateY(30px) scale(0.8);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(40px) scale(0.5) rotate(-180deg);
         }
 
         #scroll-to-top.visible {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0) scale(1);
-            animation: scroll-pulse 3s infinite ease-in-out;
+            transform: translateY(0) scale(1) rotate(0deg);
         }
 
-        @keyframes scroll-pulse {
-            0%, 100% { border-color: rgba(255, 0, 0, 0.2); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6); }
-            50% { border-color: rgba(255, 0, 0, 0.6); box-shadow: 0 10px 35px rgba(255, 0, 0, 0.2); }
+        #scroll-to-top .progress-ring {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        #scroll-to-top .progress-ring__circle {
+            transition: stroke-dashoffset 0.1s;
+            stroke-dasharray: 157; /* 2 * PI * 25 */
+            stroke-dashoffset: 157;
+            stroke: #ff0000;
+            stroke-width: 2.5;
+            fill: transparent;
+            filter: drop-shadow(0 0 5px #ff0000);
+        }
+
+        #scroll-to-top .progress-ring__background {
+            stroke: rgba(255, 255, 255, 0.05);
+            stroke-width: 2.5;
+            fill: transparent;
         }
 
         #scroll-to-top:hover {
+            transform: translateY(-10px) scale(1.1) !important;
             background: rgba(255, 0, 0, 0.1);
-            border-color: #ff0000;
-            transform: translateY(-8px) scale(1.1) !important;
-            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.4);
-            animation: none;
         }
 
-        #scroll-to-top svg {
-            width: 24px;
-            height: 24px;
-            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-            filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.3));
+        #scroll-to-top svg.chevron {
+            width: 22px;
+            height: 22px;
+            z-index: 2;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        #scroll-to-top:hover svg {
-            transform: translateY(-3px);
-            filter: drop-shadow(0 0 12px rgba(255, 0, 0, 0.8));
+        #scroll-to-top:hover svg.chevron {
+            transform: translateY(-4px);
+            filter: drop-shadow(0 0 10px #ff0000);
+        }
+
+        /* Ambient spinning effect */
+        #scroll-to-top::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid transparent;
+            border-top-color: rgba(255, 0, 0, 0.4);
+            animation: spin-button 2s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes spin-button {
+            to { transform: rotate(360deg); }
         }
 
         /* relax Style Shimmer */
@@ -548,8 +581,12 @@
 
     <!-- Scroll to Top Button -->
     <button id="scroll-to-top" aria-label="Yukarı Çık">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-            stroke-linecap="round" stroke-linejoin="round">
+        <svg class="progress-ring" viewBox="0 0 60 60">
+            <circle class="progress-ring__background" cx="30" cy="30" r="25" />
+            <circle class="progress-ring__circle" cx="30" cy="30" r="25" />
+        </svg>
+        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
             <path d="m18 15-6-6-6 6" />
         </svg>
     </button>
@@ -578,13 +615,32 @@
 
         // Scroll to top logic
         const scrollBtn = document.getElementById("scroll-to-top");
+        const circle = scrollBtn.querySelector('.progress-ring__circle');
+        const radius = circle.r.baseVal.value;
+        const circumference = radius * 2 * Math.PI;
+
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = circumference;
+
+        function setProgress(percent) {
+            const offset = circumference - (percent / 100 * circumference);
+            circle.style.strokeDashoffset = offset;
+        }
+
         window.addEventListener("scroll", () => {
-            if (window.pageYOffset > 400) {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+
+            setProgress(scrollPercent);
+
+            if (scrollTop > 400) {
                 scrollBtn.classList.add("visible");
             } else {
                 scrollBtn.classList.remove("visible");
             }
         });
+
         scrollBtn.addEventListener("click", () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
