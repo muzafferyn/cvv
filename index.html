@@ -551,6 +551,26 @@
         #preloader {
             pointer-events: auto !important;
         }
+
+        .clockStyle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.375rem 1rem;
+            font-weight: 700;
+            color: #ffffff;
+            background-color: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 0.75rem;
+            font-size: 1.125rem;
+            letter-spacing: -0.025em;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            transition: border-color 0.3s ease;
+        }
+
+        .clockStyle:hover {
+            border-color: rgba(255, 255, 255, 0.4);
+        }
     </style>
     </link>
     </link>
@@ -665,9 +685,8 @@
                             href="#contact"><span class="relative z-[80]">İletişim</span></a>
                     </div>
                     <div class="relative z-[90] flex items-center gap-4">
-                        <div class="flex items-center justify-center px-4 py-1.5 font-bold text-white bg-black border border-white/20 rounded-xl text-lg tracking-tight"
-                            id="local-time">
-                            <span id="time-text">--:--:-- --</span>
+                        <div class="clockStyle" id="clockDisplay">
+                            --:--:-- --
                         </div>
                         <button
                             class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground rounded-full w-10 h-10">
@@ -721,8 +740,7 @@
                         <!-- Bottom Controls (Theme and Language) -->
                         <div class="flex w-full justify-center gap-4 mt-4">
                             <!-- Theme Toggle Button -->
-                            <div class="flex items-center justify-center px-4 py-1.5 font-bold text-white bg-black border border-white/20 rounded-xl text-lg tracking-tight"
-                                id="local-time"><span id="time-text">--:--:-- --</span></div>
+                            <div class="clockStyle">--:--:-- --</div>
                             <!-- Language Switcher Button -->
                             <button
                                 class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-full w-10 h-10 text-neutral-600 dark:text-neutral-300">
@@ -2429,25 +2447,32 @@
         }, true); // useCapture to trigger BEFORE React intercepts clicks
     </script>
     <script id="clock-script">
-        function updateTime() {
-            const timeElements = document.querySelectorAll("#time-text");
-            if (timeElements.length === 0) return;
-            const now = new Date();
-            const hours = now.getHours();
-            const minutes = now.getMinutes();
-            const seconds = now.getSeconds();
-            const ampm = hours >= 12 ? 'PM' : 'AM';
-            const displayHours = hours % 12 || 12;
-            const timeString = 
-                String(displayHours).padStart(2, '0') + ':' + 
-                String(minutes).padStart(2, '0') + ':' + 
-                String(seconds).padStart(2, '0') + ' ' + 
-                ampm;
-            timeElements.forEach(el => el.textContent = timeString);
+        function renderTime() {
+            var currentTime = new Date();
+            var h = currentTime.getHours();
+            var m = currentTime.getMinutes();
+            var s = currentTime.getSeconds();
+            var diem = h >= 12 ? "PM" : "AM";
+
+            if (h == 0) {
+                h = 12;
+            } else if (h > 12) {
+                h = h - 12;
+            }
+
+            if (h < 10) h = "0" + h;
+            if (m < 10) m = "0" + m;
+            if (s < 10) s = "0" + s;
+
+            var timeString = h + ":" + m + ":" + s + " " + diem;
+            
+            document.querySelectorAll('.clockStyle').forEach(el => {
+                el.textContent = timeString;
+            });
+
+            setTimeout(renderTime, 1000);
         }
-        setInterval(updateTime, 1000);
-        updateTime();
-        document.addEventListener("DOMContentLoaded", updateTime);
+        document.addEventListener("DOMContentLoaded", renderTime);
     </script>
     <script id="testimonial-carousel-script">
         document.addEventListener("DOMContentLoaded", () => {
