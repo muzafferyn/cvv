@@ -613,7 +613,37 @@
             cursor: default;
             animation: none !important;
         }
-    </style>
+
+        /* Fix font issues */
+        body {
+            font-family: 'Inter', sans-serif !important;
+        }
+
+        .font-serif {
+            font-family: 'Instrument Serif', serif !important;
+            text-transform: none !important; /* Prevent unwanted uppercase */
+        }
+
+        /* Rename and fix reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px) scale(0.98);
+            transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal[data-delay="100"] { transition-delay: 100ms; }
+        .reveal[data-delay="200"] { transition-delay: 200ms; }
+        .reveal[data-delay="300"] { transition-delay: 300ms; }
+        .reveal[data-delay="400"] { transition-delay: 400ms; }
+        .reveal[data-delay="500"] { transition-delay: 500ms; }
+        .reveal[data-delay="600"] { transition-delay: 600ms; }
     </link>
     </link>
     </link>
@@ -704,7 +734,7 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             // Apply reveal initially to sections and elements
-            document.querySelectorAll('section, .reveal-element').forEach((el, index) => {
+            document.querySelectorAll('section, .reveal').forEach((el, index) => {
                 el.classList.add('reveal');
                 revealObserver.observe(el);
             });
@@ -930,65 +960,60 @@
                                 })();
                         </script>
                         <section
-                            class="relative z-20 max-w-5xl mx-auto px-4 py-28 flex flex-col items-center justify-center min-h-screen">
+                            class="relative z-20 max-w-5xl mx-auto px-4 py-20 flex flex-col items-center justify-center min-h-[90vh]">
 
-                            <div class="flex items-center gap-2 mb-8 reveal-element"><span
-                                    class="px-3 py-1 text-xs font-semibold bg-blue-500 text-white rounded-full">Müsait</span><span
-                                    class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">Yeni
-                                    fırsatlara açığım!<svg aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4"
-                                        fill="none" height="24" stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
-                                        xmlns="http://www.w3.org/2000/svg">
+                            <div class="flex items-center gap-2 mb-12 reveal" data-delay="100">
+                                <span class="px-3 py-1 text-xs font-semibold bg-blue-500 text-white rounded-full">Müsait</span>
+                                <span class="text-sm text-gray-600 dark:text-gray-400 flex items-center gap-1">
+                                    Yeni fırsatlara açığım!
+                                    <svg aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M5 12h14"></path>
                                         <path d="m12 5 7 7-7 7"></path>
-                                    </svg></span></div>
-                            <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-center text-gray-800 dark:text-gray-100 leading-relaxed mb-8 max-w-4xl reveal-element"
-                                data-delay="200">
+                                    </svg>
+                                </span>
+                            </div>
+
+                            <div class="flex flex-col items-center gap-6 mb-12 reveal" data-delay="200">
+                                <h2 class="text-4xl md:text-6xl font-serif text-center text-gray-900 dark:text-white tracking-tight leading-none">
+                                    Merhaba, ben <span class="text-blue-500">Muzaffer Yorgun</span>
+                                </h2>
+                                <div class="flex items-center gap-4">
+                                    <img alt="Muzaffer Yorgun" class="rounded-full border-2 border-blue-400/50 w-12 h-12 object-cover" src="ben2.jpg" />
+                                    <span class="text-lg sm:text-xl text-gray-700 dark:text-gray-300 flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar inline-block mr-2 size-5">
+                                            <path d="M8 2v4" />
+                                            <path d="M16 2v4" />
+                                            <rect width="18" height="18" x="3" y="4" rx="2" />
+                                            <path d="M3 10h18" />
+                                        </svg> 
+                                        07-03-2007
+                                    </span>
+                                </div>
+                            </div>
+
+                            <h1 class="text-xl md:text-2xl font-normal text-center text-gray-600 dark:text-gray-400 leading-relaxed mb-16 max-w-3xl reveal" data-delay="400">
                                 Çalışma hayatına genç yaşta adım atarak farklı sektörlerde deneyim kazandım. Öğrenmeye
                                 ve gelişime açık, iletişimi güçlü ve sorumluluk almaktan çekinmeyen bir yapıya sahibim.
                                 Farklı ortamlara kolayca uyum sağlayıp, bulunduğum her ekibe değer katmayı hedefliyorum.
                             </h1>
-                            <div class="flex items-center gap-3 mb-10 flex-wrap justify-center reveal-element"
-                                data-delay="400"><span
-                                    class="text-lg sm:text-xl text-gray-700 dark:text-gray-300">Merhaba, ben<!-- -->
-                                    <!-- -->Muzaffer Yorgun</span><img alt="Muzaffer Yorgun"
-                                    class="rounded-full border-2 border-blue-400/50" data-nimg="1" decoding="async"
-                                    height="48" loading="lazy" src="ben2.jpg" style="color:transparent"
-                                    width="48" /><span
-                                    class="text-lg sm:text-xl text-gray-700 dark:text-gray-300 flex items-center"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="lucide lucide-calendar inline-block mr-2 size-5">
-                                        <path d="M8 2v4" />
-                                        <path d="M16 2v4" />
-                                        <rect width="18" height="18" x="3" y="4" rx="2" />
-                                        <path d="M3 10h18" />
-                                    </svg> 07-03-2007</span></div>
-                            <div class="flex items-center gap-4 flex-wrap justify-center reveal-element"
-                                data-delay="600"><a
-                                    class="group flex items-center gap-3 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-medium hover:scale-105 transition-transform duration-200 relative z-30 cursor-pointer shrink-0 whitespace-nowrap"
-                                    href="#contact">İletişime Geç<span
-                                        class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center group-hover:translate-x-1 transition-transform"><svg
-                                            aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4 text-white"
-                                            fill="none" height="24" stroke="currentColor" stroke-linecap="round"
-                                            stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"
-                                            xmlns="http://www.w3.org/2000/svg">
+
+                            <div class="flex items-center gap-6 flex-wrap justify-center reveal" data-delay="600">
+                                <a class="group flex items-center gap-3 px-8 py-4 bg-gray-900 dark:bg-white text-white dark:text-gray-900 rounded-full font-semibold hover:scale-105 transition-all duration-300 relative z-30 cursor-pointer shadow-lg shadow-blue-500/10" href="#contact">
+                                    İletişime Geç
+                                    <span class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center group-hover:translate-x-1 transition-transform">
+                                        <svg aria-hidden="true" class="lucide lucide-arrow-right w-4 h-4 text-white" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M5 12h14"></path>
                                             <path d="m12 5 7 7-7 7"></path>
-                                        </svg></span></a>
-                                <div class="flex items-center gap-3 ml-2 relative z-30">
-                                    <a href="https://www.linkedin.com/in/m-yorgun-1a0a44293/" target="_blank"
-                                        rel="noopener noreferrer" title="LinkedIn"
-                                        class="flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-[#0077B5] hover:border-[#0077B5]/50 hover:bg-[#0077B5]/5 hover:scale-110 transition-all rounded-full border border-border/50 bg-background/50 shrink-0 w-12 h-12">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="currentColor">
-                                            <path
-                                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                                        </svg>
+                                    </span>
+                                </a>
+                                <div class="flex items-center gap-4 relative z-30">
+                                    <a href="https://www.linkedin.com/in/m-yorgun-1a0a44293/" target="_blank" rel="noopener noreferrer" title="LinkedIn" class="flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-[#0077B5] hover:border-[#0077B5]/50 hover:bg-[#0077B5]/5 hover:scale-110 transition-all rounded-full border border-border/50 bg-background/50 w-12 h-12">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                                         </svg>
                                     </a>
-                                    <a href="https://www.kariyer.net/ozgecmis/my5tdaxgab" target="_blank"
-                                        rel="noopener noreferrer" title="Kariyer.net"
-                                        class="flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-[#833694] dark:hover:text-[#E8A5FE] hover:border-[#833694]/50 hover:bg-[#833694]/5 hover:scale-110 transition-all rounded-full border border-border/50 bg-background/50 shrink-0 w-auto px-5 h-12 font-extrabold tracking-tight">
+                                    <a href="https://www.kariyer.net/ozgecmis/my5tdaxgab" target="_blank" rel="noopener noreferrer" title="Kariyer.net" class="flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-[#833694] dark:hover:text-[#E8A5FE] hover:border-[#833694]/50 hover:bg-[#833694]/5 hover:scale-110 transition-all rounded-full border border-border/50 bg-background/50 px-6 h-12 font-bold tracking-tight">
                                         kariyer.net
                                     </a>
                                 </div>
@@ -2640,7 +2665,56 @@
                     if (dots[1]) dots[1].addEventListener("click", () => updateSlide(1));
                 }
             }, 500);
-        });</script>
+        });
+    </script>
+    <script>
+        // Scroll Reveal logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // observer.unobserve(entry.target); // Optional: keep observing if you want it to trigger multiple times
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.reveal');
+            revealElements.forEach(el => observer.observe(el));
+
+            // Force reveal for hero section immediately
+            setTimeout(() => {
+                const heroElements = document.querySelectorAll('section .reveal');
+                heroElements.forEach(el => el.classList.add('active'));
+            }, 500);
+
+            // Preloader removal
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        preloader.style.opacity = '0';
+                        preloader.style.visibility = 'hidden';
+                        document.body.classList.remove('loader-active');
+                    }, 1000);
+                });
+                
+                // Fallback for slow loading
+                setTimeout(() => {
+                    if (document.body.classList.contains('loader-active')) {
+                        preloader.style.opacity = '0';
+                        preloader.style.visibility = 'hidden';
+                        document.body.classList.remove('loader-active');
+                    }
+                }, 4000);
+            }
+        });
+    </script>
 </body>
 
 </html>
