@@ -39,10 +39,10 @@
     <script nomodule="" src="_next/static/chunks/a6dad97d9634a72d.js"></script>
     <style>
         #desktop-nav {
-            transition: max-width 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-                background-color 0.4s ease,
-                backdrop-filter 0.4s ease !important;
+            transition: max-width 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.6s ease,
+                backdrop-filter 0.6s ease !important;
             transform-origin: top center;
             border: none !important;
             box-shadow: none !important;
@@ -86,6 +86,25 @@
                 rgba(0, 0, 0, 0.4) 0px 16px 68px,
                 rgba(255, 255, 255, 0.08) 0px 1px 0px inset !important;
         }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal[data-delay="100"] { transition-delay: 0.1s; }
+        .reveal[data-delay="200"] { transition-delay: 0.2s; }
+        .reveal[data-delay="300"] { transition-delay: 0.3s; }
+        .reveal[data-delay="400"] { transition-delay: 0.4s; }
+        .reveal[data-delay="500"] { transition-delay: 0.5s; }
 
         @media (min-width: 1080px) {
             .custom-desktop-grid {
@@ -654,6 +673,26 @@
             const offset = circumference - (percent / 100 * circumference);
             circle.style.strokeDashoffset = offset;
         }
+
+        // Scroll Reveal Observer
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            threshold: 0.1
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll('section, .reveal-element').forEach(el => {
+                el.classList.add('reveal');
+                revealObserver.observe(el);
+            });
+        });
 
         window.addEventListener("scroll", () => {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
