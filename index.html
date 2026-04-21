@@ -87,24 +87,25 @@
                 rgba(255, 255, 255, 0.08) 0px 1px 0px inset !important;
         }
 
-        /* Scroll Reveal Animation */
+        /* Scroll Reveal Animation (Caglar Cakmak Style) */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            transform: translateY(20px) scale(0.95);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
         }
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
-        .reveal[data-delay="100"] { transition-delay: 0.1s; }
-        .reveal[data-delay="200"] { transition-delay: 0.2s; }
-        .reveal[data-delay="300"] { transition-delay: 0.3s; }
-        .reveal[data-delay="400"] { transition-delay: 0.4s; }
-        .reveal[data-delay="500"] { transition-delay: 0.5s; }
+        .reveal[data-delay="100"] { transition-delay: 100ms; }
+        .reveal[data-delay="200"] { transition-delay: 200ms; }
+        .reveal[data-delay="300"] { transition-delay: 300ms; }
+        .reveal[data-delay="400"] { transition-delay: 400ms; }
+        .reveal[data-delay="500"] { transition-delay: 500ms; }
 
         @media (min-width: 1080px) {
             .custom-desktop-grid {
